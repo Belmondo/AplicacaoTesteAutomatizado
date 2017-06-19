@@ -12,8 +12,23 @@
     tools:context="br.disciplina.es.aplicacaotesteautomatizado.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <TextView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="Cadastrar"
+        android:id="@+id/buttonCadastra"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="54dp"
+        android:onClick="cadastrar"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Consultar"
+        android:id="@+id/buttonConsultar"
+        android:layout_below="@+id/buttonCadastra"
+        android:layout_centerHorizontal="true"
+        android:onClick="alterar"/>
+
 </RelativeLayout>
