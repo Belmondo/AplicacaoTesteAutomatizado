@@ -1,6 +1,7 @@
 package br.disciplina.es.aplicacaotesteautomatizado;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,13 +34,15 @@ public class Cadastra extends Activity {
                 String resultado;
                 String vazio = "";
 
-                if (null == titulo || vazio.equals(titulo)){
+                if (null == titulo || titulo.equals("")){
                         Toast.makeText(getApplicationContext(), "Preencha o título", Toast.LENGTH_LONG).show();
-                } else if(null == autor || vazio.equals(autor)){
+                } else if(null == autor || autor.equals("")){
                     Toast.makeText(getApplicationContext(), "Preencha o autor", Toast.LENGTH_LONG).show();
                 } else {
                     resultado = crud.insereDado(tituloString, autorString, editoraString);
                     Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_LONG).show();
+                    Intent voltaTela = new Intent(Cadastra.this,MainActivity.class);
+                    startActivity(voltaTela);
                 }
 
             }
