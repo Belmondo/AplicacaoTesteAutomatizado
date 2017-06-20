@@ -31,10 +31,17 @@ public class Cadastra extends Activity {
                 String autorString = autor.getText().toString();
                 String editoraString = editora.getText().toString();
                 String resultado;
+                String vazio = "";
 
-                resultado = crud.insereDado(tituloString,autorString,editoraString);
+                if (null == titulo || vazio.equals(titulo)){
+                        Toast.makeText(getApplicationContext(), "Preencha o título", Toast.LENGTH_LONG).show();
+                } else if(null == autor || vazio.equals(autor)){
+                    Toast.makeText(getApplicationContext(), "Preencha o autor", Toast.LENGTH_LONG).show();
+                } else {
+                    resultado = crud.insereDado(tituloString, autorString, editoraString);
+                    Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_LONG).show();
+                }
 
-                Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_LONG).show();
             }
         });
 
