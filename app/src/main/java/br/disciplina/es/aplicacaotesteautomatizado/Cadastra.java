@@ -2,10 +2,12 @@ package br.disciplina.es.aplicacaotesteautomatizado;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import br.disciplina.es.aplicacaotesteautomatizado.database.BancoController;
@@ -19,11 +21,17 @@ public class Cadastra extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cadastra);
 
+        final TextView textAvisoTitulo = (TextView) findViewById(R.id.textViewAvisoTitulo);
+        final TextView textAvisoAutor = (TextView) findViewById(R.id.textViewAviso);
+
+
         Button botao = (Button) findViewById(R.id.button);
 
         botao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                textAvisoAutor.setText("");
+                textAvisoTitulo.setText("");
                 BancoController crud = new BancoController(getBaseContext());
                 EditText titulo = (EditText)findViewById(R.id.editText);
                 EditText autor = (EditText)findViewById((R.id.editText2));
@@ -35,9 +43,13 @@ public class Cadastra extends Activity {
 
 
                 if (null == tituloString || tituloString.isEmpty() || tituloString.length() < 4){
-                        Toast.makeText(getApplicationContext(), "Preencha o título", Toast.LENGTH_LONG).show();
+                    textAvisoTitulo.setText("Preencha o título");
+                    textAvisoTitulo.setTextColor(Color.RED);
                 } else if(null == autorString || autorString.isEmpty() || autorString.length() < 4){
-                    Toast.makeText(getApplicationContext(), "Preencha o autor", Toast.LENGTH_LONG).show();
+
+                    textAvisoAutor.setText("Preencha o autor");
+                    textAvisoAutor.setTextColor(Color.RED);
+
                 } else {
                     resultado = crud.insereDado(tituloString, autorString, editoraString);
                     Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_LONG).show();
