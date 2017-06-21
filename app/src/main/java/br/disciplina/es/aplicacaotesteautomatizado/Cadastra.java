@@ -43,7 +43,7 @@ public class Cadastra extends Activity {
 
 
                 if (null == tituloString || tituloString.isEmpty() || tituloString.length() < 4){
-                    textAvisoTitulo.setText("Preencha o título");
+                    textAvisoTitulo.setText("Preencha o titulo");
                     textAvisoTitulo.setTextColor(Color.RED);
                 } else if(null == autorString || autorString.isEmpty() || autorString.length() < 4){
 
