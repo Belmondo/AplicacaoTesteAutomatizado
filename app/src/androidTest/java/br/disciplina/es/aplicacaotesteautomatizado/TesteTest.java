@@ -38,6 +38,7 @@ public class TesteTest extends ActivityInstrumentationTestCase2<MainActivity> {
         solo.enterText(2, "UFC");
         solo.clickOnButton(0);
         solo.assertCurrentActivity("Não permaneceu na tela quando faltou preencher o titulo", Cadastra.class);
+        assertTrue(solo.searchText("Preencha o titulo"));
         solo.goBack();
         solo.assertCurrentActivity("Não retornou para a Main Activity", MainActivity.class);
     }
@@ -49,8 +50,10 @@ public class TesteTest extends ActivityInstrumentationTestCase2<MainActivity> {
         solo.enterText(2, "UFC");
         solo.clickOnButton(0);
         solo.assertCurrentActivity("Não permaneceu na tela quando faltou preencher o autor", Cadastra.class);
+        assertTrue(solo.searchText("Preencha o autor"));
         solo.goBack();
         solo.assertCurrentActivity("Não retornou para a Main Activity", MainActivity.class);
     }
+
 
 }
