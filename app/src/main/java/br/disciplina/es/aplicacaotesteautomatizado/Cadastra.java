@@ -32,16 +32,16 @@ public class Cadastra extends Activity {
                 String autorString = autor.getText().toString();
                 String editoraString = editora.getText().toString();
                 String resultado;
-                String vazio = "";
 
-                if (null == titulo || titulo.equals("")){
+
+                if (null == tituloString || tituloString.isEmpty() || tituloString.length() < 4){
                         Toast.makeText(getApplicationContext(), "Preencha o título", Toast.LENGTH_LONG).show();
-                } else if(null == autor || autor.equals("")){
+                } else if(null == autorString || autorString.isEmpty() || autorString.length() < 4){
                     Toast.makeText(getApplicationContext(), "Preencha o autor", Toast.LENGTH_LONG).show();
                 } else {
                     resultado = crud.insereDado(tituloString, autorString, editoraString);
                     Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_LONG).show();
-                    Intent voltaTela = new Intent(Cadastra.this,MainActivity.class);
+                    Intent voltaTela = new Intent().setClass(getApplicationContext(),MainActivity.class);
                     startActivity(voltaTela);
                 }
 
